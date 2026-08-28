@@ -2,8 +2,8 @@
 
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WagmiProvider, createConfig, http } from "wagmi";
-import { RainbowKitProvider, darkTheme, Chain } from "@rainbow-me/rainbowkit";
+import { WagmiProvider, http } from "wagmi";
+import { getDefaultConfig, RainbowKitProvider, darkTheme, Chain } from "@rainbow-me/rainbowkit";
 import { hardhat } from "wagmi/chains";
 export { hardhat };
 
@@ -24,13 +24,16 @@ export const somniaTestnet: Chain = {
   testnet: true,
 };
 
-// Wagmi configuration
-export const config = createConfig({
+// Wagmi configuration using RainbowKit's default config generator for full mobile/desktop support
+export const config = getDefaultConfig({
+  appName: "PredictNaija",
+  projectId: "a6ea3899f8d951817efb6d3935db20ee",
   chains: [somniaTestnet, hardhat],
   transports: {
     [somniaTestnet.id]: http(),
     [hardhat.id]: http("http://127.0.0.1:8545"),
   },
+  ssr: true,
 });
 
 const queryClient = new QueryClient();
