@@ -33,6 +33,7 @@ yarn-error.log*
 /cache
 /artifacts
 /typechain-types
+hardhat.txt
 
 # vercel
 .vercel
