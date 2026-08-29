@@ -27,7 +27,7 @@ export const somniaTestnet: Chain = {
 // Wagmi configuration using RainbowKit's default config generator for full mobile/desktop support
 export const config = getDefaultConfig({
   appName: "PredictNaija",
-  projectId: "a6ea3899f8d951817efb6d3935db20ee",
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID || "a6ea3899f8d951817efb6d3935db20ee",
   chains: [somniaTestnet, hardhat],
   transports: {
     [somniaTestnet.id]: http(),
